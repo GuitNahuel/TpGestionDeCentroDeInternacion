@@ -10,6 +10,7 @@ public class TestingDelCentroDeInternacion {
 	public void test() {
 		fail("Not yet implemented");
 		//Comentario
+		//Otro comentario
 	}
 
 }
