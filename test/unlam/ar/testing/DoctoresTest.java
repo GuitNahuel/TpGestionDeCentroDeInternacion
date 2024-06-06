@@ -23,12 +23,12 @@ public class DoctoresTest {
 	// Este test tiene todos los tests necesarios para poder tener un seguimiento
 	// correcto y eficiente de los pacientes ingresados al sistema.
 
-	private CentroDeInternacion internacion;
+	private CentroDeInternacion centroDeInternacion;
 	private String nombre = "Hospital 100% legal";
 
 	@Before
 	public void init() {
-		this.internacion = new CentroDeInternacion(nombre);
+		this.centroDeInternacion = new CentroDeInternacion(nombre);
 	}
 
 	// Esto esta hecho por si se pone mal el DNI que retorne false si el DNI ya
@@ -40,8 +40,8 @@ public class DoctoresTest {
 		Doctor doctorDos = this.crearDoctor(1, "Raul", "Gutierrez", 50, 182354, 1129, "MHJ2018");
 
 		// Ejecucion
-		internacion.agregarDoctor(doctor);
-		Boolean sePudo = internacion.agregarDoctor(doctorDos);
+		centroDeInternacion.agregarDoctor(doctor);
+		Boolean sePudo = centroDeInternacion.agregarDoctor(doctorDos);
 
 		// Verificacion
 		assertFalse(sePudo);
@@ -56,21 +56,21 @@ public class DoctoresTest {
 		Habitacion h1 = new Habitacion(1, "P1_H101");
 		Habitacion h2 = new Habitacion(2, "P1_H2101");
 
-		internacion.agregarHabitacion(h1);
-		internacion.agregarHabitacion(h2);
+		centroDeInternacion.agregarHabitacion(h1);
+		centroDeInternacion.agregarHabitacion(h2);
 
 		Doctor doctor = this.crearDoctor(1, "Raul", "Gutierrez", 50, 182354, 11293, "MHJ208");
 		Paciente paciente = this.crearPaciente(2, "Ignacio", "Guitierrez", 20, 44444, 11293, TipoDeCobertura.PLAN1500);
 		Paciente pacienteDos = this.crearPaciente(2, "Ignacio", "Guitierrez", 20, 4444224, 11293,
 				TipoDeCobertura.PLAN1500);
 
-		internacion.agregarDoctor(doctor);
-		internacion.ingresarPaciente(paciente, doctor, EstadoDeSalud.CODEANDO, Pronostico.NO_PUEDE_RESOLVER_BUGS, 1);
-		internacion.ingresarPaciente(pacienteDos, doctor, EstadoDeSalud.CODEANDO, Pronostico.NO_PUEDE_RESOLVER_BUGS, 2);
+		centroDeInternacion.agregarDoctor(doctor);
+		centroDeInternacion.ingresarPaciente(paciente, doctor, EstadoDeSalud.CODEANDO, Pronostico.NO_PUEDE_RESOLVER_BUGS, 1);
+		centroDeInternacion.ingresarPaciente(pacienteDos, doctor, EstadoDeSalud.CODEANDO, Pronostico.NO_PUEDE_RESOLVER_BUGS, 2);
 
 		// Ejecucion
 		int pacientesEsperados = 2;
-		List<Paciente> pacientesObtenidos = internacion.obtenerPacientesDeUnDoctor("MHJ208");
+		List<Paciente> pacientesObtenidos = centroDeInternacion.obtenerPacientesDeUnDoctor("MHJ208");
 
 		// Verificacion
 		assertEquals(pacientesEsperados, pacientesObtenidos.size());
@@ -84,11 +84,11 @@ public class DoctoresTest {
 		Paciente pacienteDos = this.crearPaciente(2, "Ignacio", "Guitierrez", 20, 4444224, 11293,
 				TipoDeCobertura.PLAN1500);
 
-		internacion.agregarDoctor(doctor);
+		centroDeInternacion.agregarDoctor(doctor);
 
 		// Ejecucion
 		int pacientesEsperados = 2;
-		List<Paciente> pacientesObtenidos = internacion.obtenerPacientesDeUnDoctor("noExiste");
+		List<Paciente> pacientesObtenidos = centroDeInternacion.obtenerPacientesDeUnDoctor("noExiste");
 
 		// Verificacion
 		assertEquals(pacientesEsperados, pacientesObtenidos.size());
@@ -101,12 +101,12 @@ public class DoctoresTest {
 		Doctor doctor = this.crearDoctor(1, "Raul", "Gutierrez", 50, 182354, 11293, "MHJ208");
 		Doctor doctorDos = this.crearDoctor(1, "Raul", "Gutierrez", 50, 321823542, 11293, "MHJ2081");
 
-		internacion.agregarDoctor(doctor);
-		internacion.agregarDoctor(doctorDos);
+		centroDeInternacion.agregarDoctor(doctor);
+		centroDeInternacion.agregarDoctor(doctorDos);
 
 		// Ejecucion
 		Doctor doctorEsperado = doctor;
-		Doctor doctorObtenido = internacion.buscarDoctor("MHJ208");
+		Doctor doctorObtenido = centroDeInternacion.buscarDoctor("MHJ208");
 
 		// Verificacion
 		assertEquals(doctorEsperado, doctorObtenido);
@@ -120,12 +120,12 @@ public class DoctoresTest {
 		Doctor doctor = this.crearDoctor(1, "Raul", "Gutierrez", 50, 182354, 11293, "MHfdsJ208");
 		Doctor doctorDos = this.crearDoctor(1, "Raul", "Gutierrez", 50, 321823542, 11293, "MHJ2081");
 
-		internacion.agregarDoctor(doctor);
-		internacion.agregarDoctor(doctorDos);
+		centroDeInternacion.agregarDoctor(doctor);
+		centroDeInternacion.agregarDoctor(doctorDos);
 
 		// Ejecucion
 		Doctor doctorEsperado = doctor;
-		Doctor doctorObtenido = internacion.buscarDoctor("MHJ208");
+		Doctor doctorObtenido = centroDeInternacion.buscarDoctor("MHJ208");
 
 		// Verificacion
 		assertEquals(doctorEsperado, doctorObtenido);
