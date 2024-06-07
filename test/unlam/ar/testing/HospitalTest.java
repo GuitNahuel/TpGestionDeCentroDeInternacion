@@ -37,6 +37,8 @@ public class HospitalTest {
 	 * dadoQueExistenHabitacionesDisponiblesObtenerUnaListaDeEllas
 	 * 
 	 */
+	
+	
 
 	private CentroDeInternacion internacion;
 	private String nombre = "Hospital 100% legal";
