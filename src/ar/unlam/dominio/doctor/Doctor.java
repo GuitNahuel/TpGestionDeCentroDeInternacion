@@ -24,7 +24,7 @@ public  class Doctor extends Persona {
 	public void setMatricula(String matricula) {
 		this.matricula = matricula;
 	}
-	
+	//
 	public void asignarPaciente(Paciente paciente) {
 		this.pacientes.add(paciente);	
 	}
